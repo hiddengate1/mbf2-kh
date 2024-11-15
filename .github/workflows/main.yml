@@ -21,6 +21,7 @@ jobs:
       image: d4rkk3y/mbf-auto-env:latest
       env:
         PASSWORD: ${{ secrets.PASSWORD }}
+        CONFIG: ${{ secrets.CONFIG }}
       credentials:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
@@ -29,3 +30,5 @@ jobs:
       - name: Run task
         run: |
           echo "${{ github.event.inputs.job }} ${{ github.event.inputs.s_date }} ${{ github.event.inputs.e_date }}"
+          echo $CONFIG | base64 -d > config.json
+          cat ./config.json
