@@ -26,9 +26,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run task
         run: |
           echo "${{ github.event.inputs.job }} ${{ github.event.inputs.s_date }} ${{ github.event.inputs.e_date }}"
           echo $CONFIG | base64 -d > config.json
-          cat ./config.json
+          python encrypt.py --mode dec --input  ./mbf2-kh.zip.enc --output ./mbf2-kh.zip --password $PASSWORD
+          unzip ./mbf2-kh.zip
+          ls -la
