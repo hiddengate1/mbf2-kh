@@ -1,0 +1,31 @@
+name: schedule mbf2-kh
+on:
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Do what?'     
+        required: true
+        default: 'powerbi'
+      s_date:
+        description: 'Start date'     
+        required: true
+        default: ''
+      e_date:
+        description: 'End date'     
+        required: true
+        default: ''
+jobs:
+  run-job:
+    runs-on: ubuntu-latest
+    container:
+      image: d4rkk3y/mbf-auto-env:latest
+      env:
+        PASSWORD: ${{ secrets.PASSWORD }}
+      credentials:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run task
+        run: |
+          echo "${{ github.event.inputs.job }} ${{ github.event.inputs.s_date }} ${{ github.event.inputs.e_date }}"
