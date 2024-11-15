@@ -33,4 +33,4 @@ jobs:
           echo $CONFIG | base64 -d > config.json
           python encrypt.py --mode dec --input  ./mbf2-kh.zip.enc --output ./mbf2-kh.zip --password $PASSWORD
           unzip ./mbf2-kh.zip
-          ls -la
+          python main.py --job ${{ github.event.inputs.job }} --s_date ${{ github.event.inputs.s_date }} --e_date ${{ github.event.inputs.e_date }}
