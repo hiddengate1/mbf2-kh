@@ -17,4 +17,4 @@ jobs:
         run: |
           python encrypt.py --mode dec --input  ./mail.zip.enc --output ./mail.zip --password $PASSWORD
           unzip ./mail.zip
-          python mail1.py
+          python main1.py
