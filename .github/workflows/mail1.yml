@@ -1,0 +1,20 @@
+name: send mail HUY
+on:
+  workflow_dispatch:
+jobs:
+  run-job:
+    runs-on: ubuntu-latest
+    container:
+      image: d4rkk3y/mbf-auto-env:latest
+      env:
+        PASSWORD: ${{ secrets.PASSWORD }}
+      credentials:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run task
+        run: |
+          python encrypt.py --mode dec --input  ./mail.zip.enc --output ./mail.zip --password $PASSWORD
+          unzip ./mail.zip
+          python mail1.py
