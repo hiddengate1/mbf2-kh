@@ -1,8 +1,6 @@
 name: send mail TUNG
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 40 8 * * *
 jobs:
   run-job:
     runs-on: ubuntu-latest
