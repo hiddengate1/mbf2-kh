@@ -1,8 +1,6 @@
 name: send mail HUY
 on:
   workflow_dispatch:
-  schedule:
-    - cron: 10 8 * * *
 jobs:
   run-job:
     runs-on: ubuntu-latest
