@@ -18,3 +18,7 @@ jobs:
           python encrypt.py --mode dec --input  ./mail.zip.enc --output ./mail.zip --password $PASSWORD
           unzip ./mail.zip
           python main1.py
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: '["status1.txt", "status2.txt"]'
+          
