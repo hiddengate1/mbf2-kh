@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: d4rkk3y/mbf-auto-env:latest
+      options: --user 1001
       env:
         PASSWORD: ${{ secrets.PASSWORD }}
       credentials:
